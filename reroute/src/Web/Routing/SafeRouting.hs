@@ -80,6 +80,9 @@ instance NFData x => NFData (PathMap x) where
 emptyPathMap :: PathMap x
 emptyPathMap = PathMap mempty mempty mempty PM.empty mempty
 
+instance Semigroup (PathMap x) where
+  (<>) = mappend
+
 instance Monoid (PathMap x) where
   mempty = emptyPathMap
   mappend (PathMap c1 h1 s1 p1 w1) (PathMap c2 h2 s2 p2 w2) =

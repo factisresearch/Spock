@@ -235,6 +235,8 @@ data ActionInterupt
     | ActionApplication !(IO Wai.Application)
     deriving Typeable
 
+instance Semigroup ActionInterupt where
+    (<>) = mappend
 instance Monoid ActionInterupt where
     mempty = ActionDone
     mappend _ a = a

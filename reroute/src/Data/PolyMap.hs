@@ -31,6 +31,9 @@ instance Functor f => Functor (PolyMap c f) where
   fmap _ PMNil = PMNil
   fmap f (PMCons v pm) = PMCons (fmap ((.) f) v) (fmap f pm)
 
+instance Alternative f => Semigroup (PolyMap c f a) where
+  (<>) = union
+
 instance Alternative f => Monoid (PolyMap c f a) where
   mempty = empty
   mappend = union
